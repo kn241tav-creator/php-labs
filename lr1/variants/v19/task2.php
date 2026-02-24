@@ -1,10 +1,9 @@
 <?php
 
-$usd = 30;
+$dollars = 30;
 $rate = 41.15;
 
-$uah = $usd * $rate;
+$uah = $dollars * $rate;
 
-echo $usd . " доларів можна обміняти на " . number_format($uah, 2, '.', '') . " грн";
-
+echo $dollars . " доларів можна обміняти на " . number_format($uah, 2, '.', '') . " грн";
 ?>
