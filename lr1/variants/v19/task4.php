@@ -3,7 +3,6 @@
 $char = 'ґ';
 
 switch ($char) {
-    // Голосні
     case 'а':
     case 'е':
     case 'є':
@@ -17,14 +16,11 @@ switch ($char) {
         echo "голосна";
         break;
 
-    // Спеціальні символи
     case 'ь':
     case 'ъ':
     case "'":
         echo "спеціальний символ";
         break;
-
-    // Приголосні (все інше)
     default:
         echo "приголосна";
 }
