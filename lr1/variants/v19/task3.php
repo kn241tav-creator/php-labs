@@ -5,8 +5,7 @@ $season = "";
 $position = "";
 
 if ($month == 12 || $month == 1 || $month == 2) {
-    $season = "зима";
-    
+    $season = "зима";  
     if ($month == 12) {
         $position = "перший місяць сезону";
     } elseif ($month == 1) {
