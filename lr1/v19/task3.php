@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/layout.php';
 
 $month = 10;
 $season = "";

@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/layout.php';
 
 $dollars = 30;
 $rate = 41.15;
