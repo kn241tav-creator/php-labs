@@ -87,7 +87,7 @@ function checkPasswordStrength(string $password): array
 
 $action = $_POST['action'] ?? '';
 $genLength = (int)($_POST['gen_length'] ?? 16);
-$login = $_POST['login'] ?? 'teacher_math';
+$login = $_POST['login'] ?? 'valeriya_b19';
 $checkPassword = $_POST['check_password'] ?? '';
 $generated = '';
 $strengthResult = null;

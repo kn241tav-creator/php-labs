@@ -1,15 +1,6 @@
 <?php
-/**
- * Завдання 6: Пошук унікальних елементів
- *
- * Варіант 19: унікальні елементи
- * Масив: [11, 6, 2, 15, 6, 11, 9, 2, 4, 15, 7, 13] → [9, 4, 7, 13]
- */
 require_once __DIR__ . '/layout.php';
 
-/**
- * Знаходить унікальні елементи в масиві
- */
 function findUnique(array $arr): array
 {
     $counts = array_count_values($arr);
@@ -17,7 +8,6 @@ function findUnique(array $arr): array
     return array_values($unique);
 }
 
-// Обробка форми (варіант 19)
 $input = $_POST['array'] ?? '11, 6, 2, 15, 6, 11, 9, 2, 4, 15, 7, 13';
 $submitted = isset($_POST['array']);
 
