@@ -1,10 +1,4 @@
 <?php
-/**
- * Завдання 5: Генератор паролів (без підрядка логіну)
- *
- * Варіант 30 (група C, Sub3): пароль без підрядка логіну (>= 3 символи)
- * Довжина: 16
- */
 require_once __DIR__ . '/layout.php';
 
 function generatePassword(int $length = 16): string
@@ -28,9 +22,6 @@ function generatePassword(int $length = 16): string
     return str_shuffle($password);
 }
 
-/**
- * Генерує пароль, що не містить підрядка логіну (>= 3 символи)
- */
 function generatePasswordWithoutLogin(int $length, string $login, int $maxAttempts = 100): string
 {
     for ($attempt = 0; $attempt < $maxAttempts; $attempt++) {
@@ -39,12 +30,9 @@ function generatePasswordWithoutLogin(int $length, string $login, int $maxAttemp
             return $password;
         }
     }
-    return $password; // fallback
+    return $password; 
 }
 
-/**
- * Перевіряє чи пароль містить підрядок логіну (>= 3 символи)
- */
 function containsLoginSubstring(string $password, string $login, int $minLength = 3): bool
 {
     $loginLower = mb_strtolower($login);
@@ -97,7 +85,6 @@ function checkPasswordStrength(string $password): array
     ];
 }
 
-// Обробка (варіант 30)
 $action = $_POST['action'] ?? '';
 $genLength = (int)($_POST['gen_length'] ?? 16);
 $login = $_POST['login'] ?? 'teacher_math';

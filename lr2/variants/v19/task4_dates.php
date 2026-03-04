@@ -1,10 +1,4 @@
 <?php
-/**
- * Завдання 4: Різниця дат + день тижня
- *
- * Варіант 19: дні + день тижня (українською)
- * Дати: 07-04-2024 та 15-01-2026 → 648 днів, неділя — четвер
- */
 require_once __DIR__ . '/layout.php';
 
 function dateDifference(string $date1, string $date2): int|false
@@ -26,9 +20,6 @@ function isValidDate(string $date): bool
     return $d && $d->format('d-m-Y') === $date;
 }
 
-/**
- * Повертає назву дня тижня українською
- */
 function getWeekdayUkrainian(string $date): string
 {
     $days = [
@@ -47,7 +38,6 @@ function getWeekdayUkrainian(string $date): string
     return $days[$d->format('l')] ?? '';
 }
 
-// Вхідні дані (варіант 19)
 $date1 = $_POST['date1'] ?? '07-04-2024';
 $date2 = $_POST['date2'] ?? '15-01-2026';
 $submitted = isset($_POST['date1']);

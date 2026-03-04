@@ -1,14 +1,5 @@
 <?php
-/**
- * Завдання 2: Сортування міст за довжиною назви, потім за алфавітом
- *
- * Варіант 19: за довжиною зростаючо, при однаковій — за алфавітом
- */
 require_once __DIR__ . '/layout.php';
-
-/**
- * Сортує міста за довжиною назви, потім за алфавітом
- */
 function sortCitiesByLength(string $input): array
 {
     $cities = array_filter(array_map('trim', explode(' ', $input)));
@@ -20,7 +11,6 @@ function sortCitiesByLength(string $input): array
     return $cities;
 }
 
-// Вхідні дані (варіант 19)
 $input = $_POST['cities'] ?? '';
 $submitted = isset($_POST['cities']);
 $defaultCities = 'Бровари Сміла Жмеринка Обухів Первомайськ Нікополь Коломия Косів';

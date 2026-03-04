@@ -1,9 +1,4 @@
 <?php
-/**
- * Завдання 1: Пошук та заміна
- *
- * Варіант 19: "ро" → "ри"
- */
 require_once __DIR__ . '/layout.php';
 
 function findAndReplace(string $text, string $find, string $replace): string
@@ -14,7 +9,6 @@ function findAndReplace(string $text, string $find, string $replace): string
     return str_replace($find, $replace, $text);
 }
 
-// Вхідні дані (варіант 19)
 $text = $_POST['text'] ?? 'Професор кожного тижня проводить лекції з фізики та хімії для першокурсників';
 $find = $_POST['find'] ?? '';
 $replace = $_POST['replace'] ?? '';

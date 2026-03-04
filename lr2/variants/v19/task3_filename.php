@@ -1,9 +1,4 @@
 <?php
-/**
- * Завдання 3: Ім'я файлу
- *
- * Варіант 19: "/var/backups/database/dump_2025.docx"
- */
 require_once __DIR__ . '/layout.php';
 
 function extractFilename(string $path): string
@@ -32,7 +27,6 @@ function extractDirectory(string $path): string
     return dirname($normalized);
 }
 
-// Вхідні дані (варіант 19)
 $path = $_POST['path'] ?? '/var/backups/database/dump_2025.docx';
 $submitted = isset($_POST['path']);
 

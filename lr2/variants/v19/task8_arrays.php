@@ -2,45 +2,46 @@
 /**
  * Завдання 8: Операції з масивами
  *
- * Варіант 30 (група C): array_intersect + sort ascending
- * createArray(): довжина 3-6, значення 10-30
+ * Варіант 19: array_merge + array_unique + sort descending
+ * createArray(): довжина 4-8, значення 1-50
  */
 require_once __DIR__ . '/layout.php';
 
 /**
- * Створює масив випадкової довжини (3-6) з випадковими значеннями (10-30)
+ * Створює масив випадкової довжини (4-8) з випадковими значеннями (1-50)
  */
 function createArray(): array
 {
-    $length = random_int(3, 6);
+    $length = random_int(4, 8);
     $arr = [];
     for ($i = 0; $i < $length; $i++) {
-        $arr[] = random_int(10, 30);
+        $arr[] = random_int(1, 50);
     }
     return $arr;
 }
 
 /**
- * Знаходить спільні елементи двох масивів і сортує за зростанням
+ * Об̂єднує два масиви, видаляє дублікати і сортує за спаданням
  */
-function intersectSorted(array $a, array $b): array
+function mergeAndSort(array $a, array $b): array
 {
-    $common = array_intersect($a, $b);
-    sort($common);
-    return array_values($common);
+    $merged = array_merge($a, $b);
+    $unique = array_unique($merged);
+    rsort($unique);
+    return array_values($unique);
 }
 
-// Генеруємо масиви (варіант 30)
+// Генеруємо масиви (варіант 19)
 $arr1 = createArray();
 $arr2 = createArray();
 
-$result = intersectSorted($arr1, $arr2);
+$result = mergeAndSort($arr1, $arr2);
 
 ob_start();
 ?>
 <div class="demo-card demo-card-wide">
     <h2>Операції з масивами</h2>
-    <p class="demo-subtitle">createArray(), перетин (array_intersect), сортування за зростанням</p>
+    <p class="demo-subtitle">createArray(), об̂єднання (array_merge), видалення дублікатів, сортування за спаданням</p>
 
     <form method="post" class="demo-form">
         <button type="submit" name="regenerate" class="btn-submit">Згенерувати нові масиви</button>
