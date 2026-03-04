@@ -1,15 +1,6 @@
 <?php
-/**
- * Завдання 8: Операції з масивами
- *
- * Варіант 19: array_merge + array_unique + sort descending
- * createArray(): довжина 4-8, значення 1-50
- */
 require_once __DIR__ . '/layout.php';
 
-/**
- * Створює масив випадкової довжини (4-8) з випадковими значеннями (1-50)
- */
 function createArray(): array
 {
     $length = random_int(4, 8);
@@ -20,9 +11,6 @@ function createArray(): array
     return $arr;
 }
 
-/**
- * Об̂єднує два масиви, видаляє дублікати і сортує за спаданням
- */
 function mergeAndSort(array $a, array $b): array
 {
     $merged = array_merge($a, $b);
@@ -31,7 +19,6 @@ function mergeAndSort(array $a, array $b): array
     return array_values($unique);
 }
 
-// Генеруємо масиви (варіант 19)
 $arr1 = createArray();
 $arr2 = createArray();
 

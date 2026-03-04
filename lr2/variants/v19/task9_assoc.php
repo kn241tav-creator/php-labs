@@ -1,31 +1,18 @@
 <?php
-/**
- * Завдання 9: Асоціативний масив
- *
- * Варіант 19: імʼя студентів => оцінки (1-12)
- * Сортування: ksort (за іменем), asort (за оцінкою)
- */
 require_once __DIR__ . '/layout.php';
 
-/**
- * Сортує асоціативний масив за іменами (ключами)
- */
 function sortByName(array $employees): array
 {
     ksort($employees);
     return $employees;
 }
 
-/**
- * Сортує асоціативний масив за зарплатою (значеннями)
- */
 function sortBySalary(array $employees): array
 {
     asort($employees);
     return $employees;
 }
 
-// Дані (варіант 30)
 $employees = [
     'Микола' => 44000,
     'Жанна' => 67500,
@@ -36,7 +23,7 @@ $employees = [
     'Захар' => 40000,
 ];
 
-// Обробка
+
 $sortBy = $_POST['sort'] ?? $_GET['sort'] ?? 'name';
 $sorted = $sortBy === 'grade' ? sortByGrade($students) : sortByName($students);
 

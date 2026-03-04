@@ -1,13 +1,6 @@
 <?php
-/**
- * Завдання 11: Калькулятор — результати обчислень
- *
- * Варіант 19: X = 5, Y = 4
- * sin(5)=-0.9589, cos(5)=0.2837, tg(5)=-3.3805, 5^4=625, 5!=120
- */
 require_once __DIR__ . '/layout.php';
 
-// --- Функції (Function/func.php) ---
 
 function my_sin(float $x): float
 {

@@ -1,14 +1,6 @@
 <?php
-/**
- * Завдання 7: Генератор імен тварин
- *
- * Варіант 30: склади "ту ге ла мі ро ка ші ну бе зо", 4 імені, 2 складів
- */
 require_once __DIR__ . '/layout.php';
 
-/**
- * Генерує ім'я тварини з масиву складів
- */
 function generateAnimalName(array $syllables, int $count = 2): string
 {
     if (empty($syllables)) {
