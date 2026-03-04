@@ -1,58 +1,41 @@
 <?php
+require_once __DIR__ . '/layout.php';
+ob_start();
 
 $month = 10;
-$season = "";
-$position = "";
 
-if ($month == 12 || $month == 1 || $month == 2) {
-    $season = "зима";
-    
-    if ($month == 12) {
-        $position = "перший місяць сезону";
-    } elseif ($month == 1) {
-        $position = "середній місяць сезону";
+function getSeasonInfo(int $m): array
+{
+    if ($m >= 3 && $m <= 5) {
+        return ['name' => 'весна', 'class' => 'spring', 'emoji' => '🌸'];
+    } elseif ($m >= 6 && $m <= 8) {
+        return ['name' => 'літо', 'class' => 'summer', 'emoji' => '☀️'];
+    } elseif ($m >= 9 && $m <= 11) {
+        return ['name' => 'осінь', 'class' => 'autumn', 'emoji' => '🍂'];
     } else {
-        $position = "останній місяць сезону";
+        return ['name' => 'зима', 'class' => 'winter', 'emoji' => '❄️'];
     }
-
-} elseif ($month >= 3 && $month <= 5) {
-    $season = "весна";
-    
-    if ($month == 3) {
-        $position = "перший місяць сезону";
-    } elseif ($month == 4) {
-        $position = "середній місяць сезону";
-    } else {
-        $position = "останній місяць сезону";
-    }
-
-} elseif ($month >= 6 && $month <= 8) {
-    $season = "літо";
-    
-    if ($month == 6) {
-        $position = "перший місяць сезону";
-    } elseif ($month == 7) {
-        $position = "середній місяць сезону";
-    } else {
-        $position = "останній місяць сезону";
-    }
-
-} elseif ($month >= 9 && $month <= 11) {
-    $season = "осінь";
-    
-    if ($month == 9) {
-        $position = "перший місяць сезону";
-    } elseif ($month == 10) {
-        $position = "середній місяць сезону";
-    } else {
-        $position = "останній місяць сезону";
-    }
-
-} else {
-    echo "Невірний номер місяця";
-    exit;
 }
 
-echo $season . ", " . $position;
+function monthPosition(int $m): string
+{
+    if ($m % 3 == 1) {
+        return 'перший місяць сезону';
+    } elseif ($m % 3 == 2) {
+        return 'середній місяць сезону';
+    } else {
+        return 'останній місяць сезону';
+    }
+}
 
+$info = getSeasonInfo($month);
+$position = monthPosition($month);
+
+$content = '<div class="card large">
+    <div class="season-emoji">' . $info['emoji'] . '</div>
+    <div class="season-result">' . $info['name'] . ', ' . $position . '</div>
+</div>';
+
+renderVariantLayout($content, 'Завдання 3', 'task4-body ' . $info['class']);
 ?>
+

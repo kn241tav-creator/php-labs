@@ -1,32 +1,25 @@
 <?php
+require_once __DIR__ . '/layout.php';
+ob_start();
 
 $char = 'ґ';
 
-switch ($char) {
-    // Голосні
-    case 'а':
-    case 'е':
-    case 'є':
-    case 'и':
-    case 'і':
-    case 'ї':
-    case 'о':
-    case 'у':
-    case 'ю':
-    case 'я':
-        echo "голосна";
-        break;
+$normalized = strtolower($char);
+$vowels = ['а','е','є','и','і','ї','о','у','ю','я'];
+$special = ['ь','ъ',"'"];
 
-    // Спеціальні символи
-    case 'ь':
-    case 'ъ':
-    case "'":
-        echo "спеціальний символ";
-        break;
-
-    // Приголосні (все інше)
-    default:
-        echo "приголосна";
+if (in_array($normalized, $vowels, true)) {
+    $result = 'голосна';
+} elseif (in_array($normalized, $special, true)) {
+    $result = 'спеціальний символ';
+} else {
+    $result = 'приголосна';
 }
-
 ?>
+<div class="letter-display"><?php echo htmlspecialchars($char); ?></div>
+<p class="letter-result"><?php echo $result; ?></p>
+<?php
+$content = ob_get_clean();
+renderVariantLayout($content, 'Завдання 4', 'task5-body');
+?>
+
