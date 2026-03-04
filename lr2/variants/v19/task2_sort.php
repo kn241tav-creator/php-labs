@@ -1,37 +1,41 @@
 <?php
 /**
- * Завдання 2: Сортування міст у зворотному порядку
+ * Завдання 2: Сортування міст за довжиною назви, потім за алфавітом
  *
- * Варіант 30 (група C): rsort — зворотно за алфавітом
+ * Варіант 19: за довжиною зростаючо, при однаковій — за алфавітом
  */
 require_once __DIR__ . '/layout.php';
 
 /**
- * Сортує міста у зворотному алфавітному порядку
+ * Сортує міста за довжиною назви, потім за алфавітом
  */
-function sortCitiesReverse(string $input): array
+function sortCitiesByLength(string $input): array
 {
     $cities = array_filter(array_map('trim', explode(' ', $input)));
-    rsort($cities);
+    usort($cities, function($a, $b) {
+        $lenCompare = strlen($a) - strlen($b);
+        if ($lenCompare !== 0) return $lenCompare;
+        return strcmp($a, $b);
+    });
     return $cities;
 }
 
-// Вхідні дані (варіант 30)
+// Вхідні дані (варіант 19)
 $input = $_POST['cities'] ?? '';
 $submitted = isset($_POST['cities']);
-$defaultCities = 'Краматорськ Ладижин Бердянськ Шепетівка Новомосковськ Ромни Генічеськ Трускавець';
+$defaultCities = 'Бровари Сміла Жмеринка Обухів Первомайськ Нікополь Коломия Косів';
 
 if (!$submitted) {
     $input = $defaultCities;
 }
 
-$sorted = sortCitiesReverse($input);
+$sorted = sortCitiesByLength($input);
 
 ob_start();
 ?>
 <div class="demo-card">
-    <h2>Сортування міст (зворотне)</h2>
-    <p class="demo-subtitle">Введіть назви міст через пробіл — сортування від Я до А</p>
+    <h2>Сортування міст за довжиною</h2>
+    <p class="demo-subtitle">Введіть назви міст через пробіл — сортування за довжиною, потім за алфавітом</p>
 
     <form method="post" class="demo-form">
         <div>

@@ -1,51 +1,43 @@
 <?php
 /**
- * Завдання 6: Найчастіший елемент (мода)
+ * Завдання 6: Пошук унікальних елементів
  *
- * Варіант 30 (група C): мода замість дублікатів
- * Масив: [1, 4, 1, 1, 6, 1, 3, 1, 9, 7, 1] → 1 (6 разів)
+ * Варіант 19: унікальні елементи
+ * Масив: [11, 6, 2, 15, 6, 11, 9, 2, 4, 15, 7, 13] → [9, 4, 7, 13]
  */
 require_once __DIR__ . '/layout.php';
 
 /**
- * Знаходить найчастіший елемент (моду) в масиві
- *
- * @return array{value: mixed, count: int}|null
+ * Знаходить унікальні елементи в масиві
  */
-function findMode(array $arr): ?array
+function findUnique(array $arr): array
 {
-    if (empty($arr)) {
-        return null;
-    }
-
     $counts = array_count_values($arr);
-    $maxCount = max($counts);
-    $modeValue = array_search($maxCount, $counts);
-
-    return ['value' => $modeValue, 'count' => $maxCount];
+    $unique = array_keys(array_filter($counts, fn($count) => $count === 1));
+    return array_values($unique);
 }
 
-// Обробка форми (варіант 30)
-$input = $_POST['array'] ?? '1, 4, 1, 1, 6, 1, 3, 1, 9, 7, 1';
+// Обробка форми (варіант 19)
+$input = $_POST['array'] ?? '11, 6, 2, 15, 6, 11, 9, 2, 4, 15, 7, 13';
 $submitted = isset($_POST['array']);
 
-$arr = array_map('trim', explode(',', $input));
-$arr = array_filter($arr, fn($v) => $v !== '');
+$arr = array_map(fn($v) => (int)trim($v), explode(',', $input));
+$arr = array_filter($arr, fn($v) => $v !== 0 || $v === 0);
 
-$mode = findMode($arr);
+$unique = findUnique($arr);
 
 ob_start();
 ?>
 <div class="demo-card">
-    <h2>Найчастіший елемент (мода)</h2>
-    <p class="demo-subtitle">Знаходить елемент, що зустрічається найчастіше в масиві</p>
+    <h2>Однець в масиві</h2>
+    <p class="demo-subtitle">Вибірає однець, що зустрічаються тільки один раз</p>
 
     <form method="post" class="demo-form">
         <div>
             <label for="array">Масив (через кому)</label>
-            <input type="text" id="array" name="array" value="<?= htmlspecialchars($input) ?>" placeholder="1, 4, 1, 1, 6">
+            <input type="text" id="array" name="array" value="<?= htmlspecialchars($input) ?>" placeholder="11, 6, 2, 15">
         </div>
-        <button type="submit" class="btn-submit">Знайти моду</button>
+        <button type="submit" class="btn-submit">Найти однець</button>
     </form>
 
     <?php if (!empty($arr)): ?>
@@ -58,7 +50,7 @@ ob_start();
         </div>
     </div>
 
-    <?php if ($mode): ?>
+    <?php if (!empty($unique)): ?>
     <div class="demo-result">
         <h3>Мода</h3>
         <div class="demo-result-value"><?= htmlspecialchars($mode['value']) ?> (зустрічається <?= $mode['count'] ?> разів)</div>

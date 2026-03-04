@@ -37,10 +37,10 @@ function generateMultipleNames(array $syllables, int $namesCount = 4, int $sylla
     return $names;
 }
 
-// Обробка форми (варіант 30)
-$syllablesInput = $_POST['syllables'] ?? 'ту ге ла мі ро ка ші ну бе зо';
-$count = (int)($_POST['count'] ?? 4);
-$syllablesPerName = (int)($_POST['syllables_per_name'] ?? 2);
+// Обробка форми (варіант 19)
+$syllablesInput = $_POST['syllables'] ?? 'нор фі ке бал ту зі мар шо гу лей';
+$count = (int)($_POST['count'] ?? 3);
+$syllablesPerName = (int)($_POST['syllables_per_name'] ?? 4);
 $submitted = isset($_POST['syllables']);
 
 if ($count < 1) $count = 1;
